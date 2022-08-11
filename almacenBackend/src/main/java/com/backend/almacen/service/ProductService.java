@@ -10,6 +10,5 @@ public interface ProductService {
     Iterable<Product> findAll();
     Product save(Product product);
     Optional<Product> findById(int id);
-    Product delete(int id);
 
 }
