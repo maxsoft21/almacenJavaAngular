@@ -1,6 +1,7 @@
 package com.backend.almacen.service;
 
 import com.backend.almacen.dto.ResponsePaginationDto;
+import com.backend.almacen.exception.ResourceNotFoundException;
 import com.backend.almacen.model.Product;
 import com.backend.almacen.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,13 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Optional<Product> findById(int id) {
         return productRepository.findById(id);
+    }
+
+    @Override
+    public Product delete(int id) {
+        Product producto = productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id :" + id));
+        productRepository.delete(producto);
+        return producto;
     }
 }
