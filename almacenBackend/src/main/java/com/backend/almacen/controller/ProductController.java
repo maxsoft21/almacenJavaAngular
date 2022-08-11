@@ -2,12 +2,16 @@ package com.backend.almacen.controller;
 
 import com.backend.almacen.dto.ResponsePaginationDto;
 import com.backend.almacen.exception.ResourceNotFoundException;
+import com.backend.almacen.model.Employee;
 import com.backend.almacen.model.Product;
 import com.backend.almacen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -53,5 +57,13 @@ public class ProductController {
         Product product = productService.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("product not exist with id :" + productId));
         return ResponseEntity.status(HttpStatus.OK).body(product);
+    }
+
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable int id){
+        productService.delete(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }
