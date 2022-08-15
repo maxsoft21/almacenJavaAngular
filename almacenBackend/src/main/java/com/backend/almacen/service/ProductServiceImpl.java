@@ -29,9 +29,10 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Iterable<Product> findAll() {
-        return productRepository.findAll();
+    public Page<Product> getAllProducts(Integer page, Integer size, Boolean enablePagination){
+        return productRepository.findAll(enablePagination ? PageRequest.of(page, size): Pageable.unpaged());
     }
+
 
     @Override
     public Product save(Product product) {

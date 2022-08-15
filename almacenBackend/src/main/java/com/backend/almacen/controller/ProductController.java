@@ -6,6 +6,7 @@ import com.backend.almacen.model.Employee;
 import com.backend.almacen.model.Product;
 import com.backend.almacen.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,51 +16,55 @@ import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/produtcs")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/products")
-    public ResponseEntity<Iterable<Product>> getProducts() {
-        return ResponseEntity.ok(productService.findAll());
+    @GetMapping
+    public ResponseEntity<Page<Product>> getAllProducts(
+            @RequestParam(required = false,defaultValue = "0") Integer page,
+            @RequestParam(required = false,defaultValue = "10") Integer size,
+            @RequestParam(required = false,defaultValue = "false") Boolean enablePagination) {
+        return ResponseEntity.ok(productService.getAllProducts(page, size, enablePagination));
     }
 
-    @GetMapping(value = "/products/p", params = {"page", "size"})
+    @GetMapping(value = "/p", params = {"page", "size"})
     public ResponseEntity<ResponsePaginationDto> findPaginated(@RequestParam(defaultValue = "0") int page,
                                                                @RequestParam(defaultValue = "10") int size) {
         return ResponseEntity.ok(productService.getProducts(page, size));
     }
 
     // create product rest api
-    @PostMapping("/products")
+    @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 productService.save(product));
     }
 
-    @PutMapping("/products/{productId}")
+    @PutMapping("/{productId}")
     public ResponseEntity<Product> updateProduct(@PathVariable("productId") int productId, @RequestBody Product productUpdate) {
         Product product = productService.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("product not exist with id :" + productId));
 
-        product.setDescription(productUpdate.getDescription());
-        product.setDiscountedPrice(productUpdate.getDiscountedPrice());
-        product.setOriginalPrice(productUpdate.getOriginalPrice());
-        product.setStock(productUpdate.getStock());
+        product.setName(productUpdate.getName());
+        product.setPrice(productUpdate.getPrice());
+        product.setAddress(productUpdate.getAddress());
+        product.setAddress(productUpdate.getAddress());
+        product.setLocation(productUpdate.getLocation());
 
         Product updatedProduct = productService.save(product);
         return ResponseEntity.status(HttpStatus.OK).body(updatedProduct);
     }
-    @GetMapping("/products/{productId}")
+    @GetMapping("/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable("productId") int productId) {
         Product product = productService.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("product not exist with id :" + productId));
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable int id){
         productService.delete(id);
         Map<String, Boolean> response = new HashMap<>();

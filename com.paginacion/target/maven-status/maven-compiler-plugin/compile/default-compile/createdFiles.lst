@@ -1,9 +1,0 @@
-com\paginacion\repository\IProductRepository.class
-com\paginacion\model\Product.class
-com\paginacion\service\ArticleService.class
-com\paginacion\service\ProductService.class
-com\paginacion\controller\ArticleController.class
-com\paginacion\repository\IArticleRepository.class
-com\paginacion\Main.class
-com\paginacion\model\Article.class
-com\paginacion\controller\ProductController.class

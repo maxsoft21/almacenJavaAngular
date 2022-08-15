@@ -3,7 +3,9 @@ package com.backend.almacen.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "product")
@@ -12,12 +14,17 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String description;
-    @Column(name = "original_price")
-    private BigDecimal originalPrice;
-    @Column(name = "discounted_price")
-    private BigDecimal discountedPrice;
-    private Long stock;
+    private Long id;
+    @NotBlank
+    @Column(name = "nombre")
+    private String name;
+    @Column(name = "precio")
+    private BigDecimal price;
+    @Column(name = "fecha")
+    private Date date;
+    @Column(name = "direccion")
+    private String address;
+    @Column(name = "ubicacion")
+    private String location;
 
 }
