@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <button mat-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="flex-container">
+       <!--  <button mat-button class="flex-item">Menu Principal</button> -->
+
+        <button mat-button class="flex-item" aria-label="Example icon-button with heart icon">
+            {{ "user.username" }}
+        </button>
+        <button (click)="logout()" mat-button class="flex-item btn-danger"
+            aria-label="Example icon-button with heart icon">
+            Cerrar sesión
+        </button>
+    </div>
+
+</mat-toolbar>

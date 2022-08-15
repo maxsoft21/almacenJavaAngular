@@ -1,42 +1,55 @@
 <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">DataTable with minimal features & hover style</h3>
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <table id="example2" class="table table-bordered table-hover">
-        <thead>
+  <div class="card-header">
+    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
         <tr>
-          <th>ID</th>
-          <th>Description</th>
-          <th>OriginalPrice</th>
-          <th>DiscountedPrice</th>
-          <th>Stock</th>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Precio(s)</th>
+          <th>Fecha</th>
+          <th>Direccion</th>
+          <th>Ubicacion</th>
           <th></th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
         <tr *ngFor="let item of listaProductos">
           <td>{{item.id}}</td>
-          <td>{{item.description}}</td>
-          <td>{{item.originalPrice}}</td>
-          <td>{{item.discountedPrice}}</td>
-          <td>{{item.stock}}</td>
-          <td>Editar</td>
+          <td><a [routerLink]="['/private/producto/editar', item.id]">{{item.name}}</a></td>
+          <td>{{item.price}}</td>
+          <td>{{item.date | date: 'dd/MM/yyyy'}}</td>
+          <td>{{item.address}}</td>
+          <td>{{item.location}}</td>
+          <td><a [routerLink]="['/private/producto/ver', item.id]">View</a></td>
         </tr>
-        
-        </tbody>
-        <tfoot>
+      </tbody>
+      <tfoot>
         <tr>
-          <th>Rendering engine</th>
-          <th>Browser</th>
-          <th>Platform(s)</th>
-          <th>Engine version</th>
-          <th>CSS grade</th>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Precio(s)</th>
+          <th>Fecha</th>
+          <th>Direccion</th>
+          <th>Ubicacion</th>
+          <th></th>
         </tr>
-        </tfoot>
-      </table>
-    </div>
-    <!-- /.card-body -->
+      </tfoot>
+    </table>
+    <button (click)="cambiarPagina(-1)">Anterior</button>
+    <button (click)="cambiarPagina(1)">Siguiente</button>
+    <button (click)="cearPagina()">Nuevo Producto</button>
+    <mat-paginator 
+      [length]="tElements" 
+      [pageSize]="rp" 
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePages($event)" 
+      aria-label="Select page">
+    </mat-paginator>
   </div>
-  <!-- /.card -->
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->

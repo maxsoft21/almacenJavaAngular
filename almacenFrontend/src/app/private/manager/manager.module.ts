@@ -4,17 +4,10 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { ManagerAppComponent } from './manager-app/manager-app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [
-  { path: '', component: ManagerAppComponent,children: [
-    {path: '', component: MainContentComponent}
-  ]},
-  { path: '**', redirectTo: 'buttons' }
-];
+import { MaterialModule } from 'src/app/shared/material.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +20,7 @@ const routes: Routes = [
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    RouterModule.forChild(routes),
+    RouterModule
   ]
 })
 export class ManagerModule { }
