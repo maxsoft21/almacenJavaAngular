@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">DataTable with minimal features & hover style</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example2" class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>UserName</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaUsuarios">
+            <td>{{item.username}}</td>
+            <td><a [routerLink]="['/private/usuarios/editar', item.username]">{{item.nombre}}</a></td>
+            <td>{{item.apellido}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.telefono}}</td>
+            <td><a [routerLink]="['/private/usuarios/ver', item.username]">View</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>UserName</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+      <button (click)="cambiarPagina(-1)">Anterior</button>
+      <button (click)="cambiarPagina(1)">Siguiente</button>
+      <button (click)="cearPagina()">Nuevo Usuario</button>
+      <mat-paginator 
+        [length]="tElements" 
+        [pageSize]="rp" 
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="handlePages($event)" 
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->

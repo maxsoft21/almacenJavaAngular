@@ -1,0 +1,71 @@
+<div class="register-box">
+    <div class="card">
+      <div class="card-body register-card-body">
+        <p class="login-box-msg">Ver Usuario</p>  
+        <form [formGroup]="verUsuario" (ngSubmit) = "listarUsuarios()">
+            <div class="input-group mb-3">              
+                <label type="label" class="form-control">{{verUsuario.value.username}}</label>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+                <label type="label" class="form-control">{{verUsuario.value.password}}</label>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="input-group mb-3">
+                <label type="label" class="form-control">{{verUsuario.value.nombre}}</label>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="input-group mb-3">
+                <label type="label" class="form-control">{{verUsuario.value.apellido}}</label>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+                <label type="label" class="form-control">{{verUsuario.value.email}}</label>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="input-group mb-3">
+                <label type="label" class="form-control">{{verUsuario.value.telefono}}</label>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-phone"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row text-right">
+              <!-- /.col -->
+              <div class="col-12">
+                <button mat-raised-button color="primary">Listar Usuarios</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+  
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>

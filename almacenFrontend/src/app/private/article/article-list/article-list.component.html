@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">DataTable with minimal features & hover style</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example2" class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio(s)</th>
+            <th>Costo</th>
+            <th>Fecha Registro</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaArticulos">
+            <td>{{item.idArticulo}}</td>
+            <td><a [routerLink]="['/private/articulos/editar', item.idArticulo]">{{item.nombre}}</a></td>
+            <td>{{item.precio}}</td>
+            <td>{{item.costo}}</td>
+            <td>{{item.fechaRegistro | date: 'dd/MM/yyyy'}}</td>
+            <td><a [routerLink]="['/private/articulos/ver', item.idArticulo]">View</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio(s)</th>
+            <th>Costo</th>
+            <th>Fecha Registro</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+      <button (click)="cambiarPagina(-1)">Anterior</button>
+      <button (click)="cambiarPagina(1)">Siguiente</button>
+      <button (click)="cearPagina()">Nuevo Articulo</button>
+      <mat-paginator 
+        [length]="tElements" 
+        [pageSize]="rp" 
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="handlePages($event)" 
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->

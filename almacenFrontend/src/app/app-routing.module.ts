@@ -7,7 +7,6 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 
 const routes: Routes = [
   {path: 'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)},
-  {path: 'manager', loadChildren: () => import('./manager/manager.module').then(m => m.ManagerModule)}, 
   {path: 'private', loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)}, 
   {path: 'public', loadChildren: () => import('./public/public.module').then(m => m.PublicModule)},  
   { path: '',   redirectTo: '/public/login', pathMatch: 'full' },

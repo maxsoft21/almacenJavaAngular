@@ -1,0 +1,25 @@
+.sidenav-toggle {
+    display: none;
+}
+
+@media(max-width:720px) {
+    .sidenav-toggle {
+
+        display: flex;
+    }
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-item{
+    height: 70px;
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
