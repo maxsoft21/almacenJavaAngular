@@ -1,0 +1,10 @@
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('laptop ASUS',3000,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('laptop Samsung',2000,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('laptop Compaq',3500,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('laptop Dell',3600,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('laptop Toshiba',2300,'2022-10-30','Lima, Perú','Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('Celular ASUS',3000,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('Celular Samsung',2000,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('Celular Compaq',3500,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('Celular Dell',3600,'2022-10-30','Lima, Perú', 'Lima');
+INSERT INTO Producto(nombre, precio, fecha, direccion, ubicacion) VALUES ('Celular Toshiba',2300,'2022-10-30','Lima, Perú','Lima');
